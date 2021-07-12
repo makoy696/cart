@@ -88,22 +88,26 @@
         <div class="row">
             <div class="sell-table">
                 <form action="">
-                    <label>
-                        Product
-                        <select name="product">
-                            <?php
+                    <div class="row">
+                        <label>
+                            Product
+                            <select name="product">
+                                <?php
                                 foreach ($products as $product) {
                                     echo "<option value='{$product["product_id"]}_{$product["price"]}_{$product['product']}'>" .$product['product']. "</option>";
                                 }
-                            ?>
-                        </select>
-                    </label>
-                    <label>
-                        Quantity
-                        <input style="width: 50px;" type="number" name="quantity" value="1">
-                    </label>
-                    <input name="add" type="submit" value="Add">
-                    <input name="clear" type="submit" value="Clear">
+                                ?>
+                            </select>
+                        </label>
+                        <label>
+                            Quantity
+                            <input style="width: 50px;" type="number" name="quantity" value="1">
+                        </label>
+                    </div>
+                    <div class="row" style="margin-top: 20px">
+                        <input name="add" type="submit" value="Add">
+                        <input style="margin-left: 10px" name="clear" type="submit" value="Clear">
+                    </div>
                 </form>
             </div>
         </div>
