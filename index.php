@@ -3,13 +3,16 @@
     require 'controller/controller.php';
     require 'controller/Cart.php';
     $conn = new Database('db_main', 'localhost', 'root', '');
-    $conn = $conn->getConn();
-    $query = new Controller($conn);
-
+    $connObj = $conn->getConn();
+    $checkTable = $conn->checkTable();
+    $query = new Controller($connObj);
+    if (empty($checkTable)) {
+        $conn->insertTable();
+    }
     $products = $query->getAllProducts();
-//    echo '<pre>' . print_r($products,true) . '</pre>';
+//    echo '<pre>' . print_r($checkTable,true) . '</pre>';
     session_start();
-    $cartObj = new Cart($conn);
+    $cartObj = new Cart($connObj);
     $message = "";
     $notif = 'success';
     unset($_SESSION['invalid']);
